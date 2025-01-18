@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import useAuth from "../../Hooks/UseAuth";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [disabled, setDisabled] = useState(true);
+    const { signIn } = useAuth();
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadCaptchaEnginge(6);
-    }, [])
+    }, []);
 
     const handleCaptcha = (e) => {
         const captcha = e.target.value;
@@ -19,10 +24,35 @@ const LoginForm = () => {
 
 
     const onSubmit = (data) => {
-        console.log("Login Data:", data);
-        alert("Login Successful!");
-        reset()
-        setDisabled(true)
+        signIn(data.email, data.password)
+            .then(() => {
+                Swal.fire({
+                    title: "Success!",
+                    text: "Login Successfully",
+                    icon: "success",
+                    confirmButtonText: "Close",
+                });
+                reset();
+                setDisabled(true);
+                navigate(location?.state?.from || "/");
+            })
+            .catch((err) => {
+                let message = "Your email & password do not match.";
+                if (err.code === "auth/user-not-found") {
+                    message = "User not found. Please check your email.";
+                } else if (err.code === "auth/wrong-password") {
+                    message = "Incorrect password. Please try again.";
+                } else if (err.code === "auth/too-many-requests") {
+                    message = "Too many failed attempts. Try again later.";
+                } else if (err.code === "auth/invalid-credential") {
+                    message = "invalid credential.";
+                }
+                Swal.fire({
+                    icon: "error",
+                    title: "Login Failed",
+                    text: message,
+                });
+            });
     };
 
     return (
@@ -99,7 +129,7 @@ const LoginForm = () => {
                             <button
                                 type="submit"
                                 disabled={disabled}
-                                className={`w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${disabled ? "bg-gray-500": "bg-blue-400"}`}
+                                className={`w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${disabled ? "bg-gray-500" : "bg-blue-400"}`}
                             >
                                 Login
                             </button>

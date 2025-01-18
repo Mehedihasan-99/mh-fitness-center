@@ -8,9 +8,11 @@ const MainLayout = () => {
     const noHeaderFooter = location.pathname.includes('/login') || location.pathname.includes('/sign-up')
     return (
         <div>
-            { noHeaderFooter || <Navbar /> }
-            <Outlet/>
-            { noHeaderFooter || <Footer /> }
+            {noHeaderFooter || <Navbar />}
+            <div className='min-h-[calc(100vh-405px)]'>
+                <Outlet />
+            </div>
+            {noHeaderFooter || <Footer />}
         </div>
     );
 };

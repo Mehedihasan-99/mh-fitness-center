@@ -1,32 +1,34 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import useAuth from "../../Hooks/UseAuth";
 
 const Navbar = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false);
-    const user = false
-    const logout = () => {
-        console.log('logout')
-    }
+    const { user, logout } = useAuth()
+
+
     const NavLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/trainers'>Trainers</NavLink></li>
         <li><NavLink to='/classes'>Classes</NavLink></li>
-        <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+        {
+            user && <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+        }
         <li><NavLink to='/community'>Community</NavLink></li>
     </>
 
+    console.log("user", user)
 
     return (
-        <header className="fixed z-20 text-white w-full bg-[#ed002e] after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px lg:backdrop-blur-sm lg:after:hidden">
+        <div className="sticky top-0 z-50 bg-[#ed002e]">
             <div className="w-11/12 relative mx-auto lg:max-w-5xl">
                 <nav
                     aria-label="main navigation"
                     className="flex py-2 items-center justify-between font-medium"
                     role="navigation"
                 >
-                    {/*      <!-- Brand logo --> */}
                     <div className="flex items-end gap-2">
-                        <h2 className="text-4xl md:text-4xl font-bold">MH </h2>
+                        <h2 className="text-4xl md:text-4xl font-bold">MH</h2>
                         <div>
                             <p className="text-xs -mb-2">FitNess</p>
                             <span >center</span>
@@ -69,20 +71,21 @@ const Navbar = () => {
                         </button>
                         <div className="flex md:gap-3">
                             {
-                                user ? <button className="rounded-lg px-2 text-xs font-medium bg-blue-500 border-none hover:bg-emerald-100 hover:text-emerald-600 " onClick={logout} >LOGOUT</button> : <button className="rounded-lg px-2 border-none text-xs font-medium bg-blue-500 hover:bg-emerald-100 hover:text-emerald-600 " onClick={logout} ><NavLink to='/login'>LOGIN</NavLink></button>
+                                user ?
+                                    <><button className="rounded-lg px-2 text-xs font-medium bg-blue-500 border-none hover:bg-emerald-100 hover:text-emerald-600 " onClick={logout} >LOGOUT</button>
+                                        <div className="ml-auto flex items-center px-2 md:px-6 lg:ml-0 lg:p-0">
+                                            <img
+                                                src={user?.photoURL}
+                                                alt="user name"
+                                                title="user name"
+                                                width="40"
+                                                height="40"
+                                                className="max-w-full rounded-full"
+                                            />
+                                        </div> </>
+                                    : <NavLink to='/login'><button className="rounded-lg px-5 py-2 text-xs font-medium bg-blue-500 border-none hover:bg-emerald-100 hover:text-emerald-600 " onClick={logout} >LOGIN</button></NavLink>
                             }
-                            <div className="ml-auto flex items-center px-2 md:px-6 lg:ml-0 lg:p-0">
-                                {/*        <!-- Avatar --> */}
-                                <img
-                                    src="https://i.pravatar.cc/40?img=35"
-                                    alt="user name"
-                                    title="user name"
-                                    width="40"
-                                    height="40"
-                                    className="max-w-full rounded-full"
-                                />
-                                {/*        <!-- End Avatar --> */}
-                            </div>
+
                             <ul
                                 role="menubar"
                                 aria-label="Select page"
@@ -97,7 +100,7 @@ const Navbar = () => {
                     </div>
                 </nav>
             </div>
-        </header>
+        </div>
     );
 };
 

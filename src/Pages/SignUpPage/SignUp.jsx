@@ -1,13 +1,92 @@
 import { useForm } from 'react-hook-form';
+import useAuth from '../../Hooks/UseAuth';
+import axios from 'axios';
+import useAxiosClient from '../../Hooks/useAxiosClient';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile } = useAuth();
+    const axiosClient = useAxiosClient();
+    const navigate = useNavigate();
 
-    const onSubmit = (data) => {
-        console.log("Login Data:", data);
-        alert("Login Successful!");
-        reset()
+
+    const onSubmit = async (data) => {
+        try {
+            // User Creation
+            await createUser(data.email, data.password);
+            console.log("User created successfully");
+
+            const imageFile = { image: data.image[0] };
+            const res = await axiosClient.post(image_hosting_api, imageFile, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+
+            if (!res.data.success) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Image Upload Failed",
+                    text: "Please try again later.",
+                });
+                return;
+            }
+
+            // Update Profile
+            const photo = res.data.data.display_url;
+            const name = data.name;
+            await updateUserProfile(name, photo);
+
+            const userInfo = {
+                name,
+                image: photo,
+                email: data.email,
+                role: "member",
+            };
+
+            const userRes = await axiosClient.post("/users", userInfo);
+
+            if (userRes.data.insertedId) {
+                Swal.fire({
+                    title: "Success!",
+                    text: "Sign Up is Successfully Completed",
+                    icon: "success",
+                    confirmButtonText: "Close",
+                });
+                reset();
+                navigate(location?.state?.from || "/");
+            }
+        } catch (error) {
+            console.error("Error during sign-up:", error);
+
+            const message = getAuthErrorMessage(error.code);
+            console.log('error: ', error)
+            Swal.fire({
+                icon: "error",
+                title: "Sign-Up Failed",
+                text: message,
+            });
+        }
     };
+
+    const getAuthErrorMessage = (code) => {
+        const messages = {
+            "auth/email-already-in-use": "The email address is already registered.",
+            "auth/user-not-found": "User not found. Please check your email.",
+            "auth/wrong-password": "Incorrect password. Please try again.",
+            "auth/too-many-requests": "Too many failed attempts. Try again later.",
+            "auth/invalid-credential": "Invalid credentials provided.",
+        };
+        return messages[code] || "An unknown error occurred. Please try again.";
+    };
+
+
+
 
     return (
         <div>
@@ -43,7 +122,7 @@ const SignUp = () => {
                                     htmlFor="email"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Email
+                                    Email :
                                 </label>
                                 <input
                                     id="email"
@@ -54,6 +133,25 @@ const SignUp = () => {
                                         }`}
                                 />
                                 {errors.email && (
+                                    <span className="text-sm text-red-500">{errors.email.message}</span>
+                                )}
+                            </div>
+                            {/* image Field */}
+                            <div className="mb-4">
+                                <label
+                                    htmlFor="photo"
+                                    className="block text-sm font-medium text-gray-700"
+                                >
+                                    Photo :
+                                </label>
+                                <input
+                                    id="image"
+                                    type="file"
+                                    {...register("image", { required: "photo is required" })}
+                                    className={`mt-1 block w-full px-4 py-2 text-sm  rounded-lg focus:ring-2  focus:border-transparent ${errors.image ? "border-red-500" : "border-gray-300"
+                                        }`}
+                                />
+                                {errors.image && (
                                     <span className="text-sm text-red-500">{errors.email.message}</span>
                                 )}
                             </div>

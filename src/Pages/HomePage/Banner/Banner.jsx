@@ -59,8 +59,8 @@ const Banner = () => {
     ];
 
     return (
-        <div className="glide-01 relative w-full mb-4 md:mb-20">
-            <div className="overflow-hidden rounded-2xl  w-full" data-glide-el="track">
+        <div className="glide-01 relative w-full mb-4 md:mb-10 lg:mb-20">
+            <div className="overflow-hidden w-full" data-glide-el="track">
                 <ul className="flex w-full overflow-hidden p-0">
                     {slides.map((slide) => (
                         <li
