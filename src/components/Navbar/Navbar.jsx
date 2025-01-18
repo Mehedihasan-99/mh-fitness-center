@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false);
-    const user = true
+    const user = false
     const logout = () => {
         console.log('logout')
     }
@@ -17,11 +17,11 @@ const Navbar = () => {
 
 
     return (
-        <header className="fixed z-20 text-white w-full bg-[#ed002e] after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
+        <header className="fixed z-20 text-white w-full bg-[#ed002e] after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px lg:backdrop-blur-sm lg:after:hidden">
             <div className="w-11/12 relative mx-auto lg:max-w-5xl">
                 <nav
                     aria-label="main navigation"
-                    className="flex h-[5.5rem] items-center justify-between font-medium"
+                    className="flex py-2 items-center justify-between font-medium"
                     role="navigation"
                 >
                     {/*      <!-- Brand logo --> */}
@@ -69,7 +69,7 @@ const Navbar = () => {
                         </button>
                         <div className="flex md:gap-3">
                             {
-                                user ? <button className="rounded-lg px-2 text-xs font-medium bg-blue-200 hover:bg-emerald-100 hover:text-emerald-600 " onClick={logout} >LOGOUT</button> : <button className=" text-xs font-medium bg-blue-200 hover:bg-emerald-100 hover:text-emerald-600 " onClick={logout} ><NavLink to='/login'>LOGIN</NavLink></button>
+                                user ? <button className="rounded-lg px-2 text-xs font-medium bg-blue-500 border-none hover:bg-emerald-100 hover:text-emerald-600 " onClick={logout} >LOGOUT</button> : <button className="rounded-lg px-2 border-none text-xs font-medium bg-blue-500 hover:bg-emerald-100 hover:text-emerald-600 " onClick={logout} ><NavLink to='/login'>LOGIN</NavLink></button>
                             }
                             <div className="ml-auto flex items-center px-2 md:px-6 lg:ml-0 lg:p-0">
                                 {/*        <!-- Avatar --> */}
