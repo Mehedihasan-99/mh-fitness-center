@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../Hooks/UseAuth";
+import Loading from "../Loading/Loading";
 
 const Navbar = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false);
-    const { user, logout } = useAuth()
+    const { user, loading, logout } = useAuth()
 
 
     const NavLinks = <>
@@ -17,7 +18,7 @@ const Navbar = () => {
         <li><NavLink to='/community'>Community</NavLink></li>
     </>
 
-    console.log("user", user)
+   if (loading) return <Loading />
 
     return (
         <div className="sticky top-0 z-50 bg-[#ed002e]">

@@ -1,0 +1,182 @@
+[
+    {
+        "_id": 1,
+        "name": "John Doe",
+        "image": "https://source.unsplash.com/400x400/?trainer,man",
+        "age": 30,
+        "experience": "5 years",
+        "available_slots": [
+            "9:00 AM - 10:00 AM",
+            "11:00 AM - 12:00 PM",
+            "2:00 PM - 3:00 PM"
+        ],
+        "biography": "John is a certified personal trainer specializing in strength training and nutrition planning.",
+        "skills": [
+            "Strength Training",
+            "Nutrition Planning",
+            "Bodybuilding"
+        ]
+    },
+    {
+        "_id": 2,
+        "name": "Jane Smith",
+        "image": "https://source.unsplash.com/400x400/?trainer,woman",
+        "age": 28,
+        "experience": "4 years",
+        "available_slots": [
+            "10:00 AM - 11:00 AM",
+            "1:00 PM - 2:00 PM",
+            "3:00 PM - 4:00 PM"
+        ],
+        "biography": "Jane is an expert in yoga and flexibility training with a passion for holistic wellness.",
+        "skills": [
+            "Yoga",
+            "Flexibility Training",
+            "Pilates"
+        ]
+    },
+    {
+        "_id": 3,
+        "name": "Mike Johnson",
+        "image": "https://source.unsplash.com/400x400/?fitness,man",
+        "age": 35,
+        "experience": "8 years",
+        "available_slots": [
+            "6:00 AM - 7:00 AM",
+            "8:00 AM - 9:00 AM",
+            "5:00 PM - 6:00 PM"
+        ],
+        "biography": "Mike has extensive experience in weight loss programs and cardiovascular fitness.",
+        "skills": [
+            "Weight Loss",
+            "Cardiovascular Fitness",
+            "HIIT"
+        ]
+    },
+    {
+        "_id": 4,
+        "name": "Emily Davis",
+        "image": "https://source.unsplash.com/400x400/?gym,woman",
+        "age": 32,
+        "experience": "6 years",
+        "available_slots": [
+            "7:00 AM - 8:00 AM",
+            "12:00 PM - 1:00 PM",
+            "4:00 PM - 5:00 PM"
+        ],
+        "biography": "Emily is a certified strength coach who focuses on functional fitness and injury prevention.",
+        "skills": [
+            "Functional Fitness",
+            "Strength Training",
+            "Injury Prevention"
+        ]
+    },
+    {
+        "_id": 5,
+        "name": "Chris Brown",
+        "image": "https://source.unsplash.com/400x400/?sports,man",
+        "age": 29,
+        "experience": "5 years",
+        "available_slots": [
+            "8:00 AM - 9:00 AM",
+            "2:00 PM - 3:00 PM",
+            "6:00 PM - 7:00 PM"
+        ],
+        "biography": "Chris specializes in endurance training and sports conditioning for athletes.",
+        "skills": [
+            "Endurance Training",
+            "Sports Conditioning",
+            "Agility Drills"
+        ]
+    },
+    {
+        "_id": 6,
+        "name": "Sophia Wilson",
+        "image": "https://source.unsplash.com/400x400/?zumba,woman",
+        "age": 26,
+        "experience": "3 years",
+        "available_slots": [
+            "7:00 AM - 8:00 AM",
+            "10:00 AM - 11:00 AM",
+            "5:00 PM - 6:00 PM"
+        ],
+        "biography": "Sophia is a passionate personal trainer focusing on group fitness classes and Zumba.",
+        "skills": [
+            "Group Fitness",
+            "Zumba",
+            "Aerobics"
+        ]
+    },
+    {
+        "_id": 7,
+        "name": "David Lee",
+        "image": "https://source.unsplash.com/400x400/?powerlifting,man",
+        "age": 40,
+        "experience": "12 years",
+        "available_slots": [
+            "9:00 AM - 10:00 AM",
+            "1:00 PM - 2:00 PM",
+            "6:00 PM - 7:00 PM"
+        ],
+        "biography": "David is a veteran trainer specializing in powerlifting and advanced strength techniques.",
+        "skills": [
+            "Powerlifting",
+            "Advanced Strength Training",
+            "Kettlebell Workouts"
+        ]
+    },
+    {
+        "_id": 8,
+        "name": "Laura Miller",
+        "image": "https://source.unsplash.com/400x400/?fitness,woman",
+        "age": 31,
+        "experience": "7 years",
+        "available_slots": [
+            "11:00 AM - 12:00 PM",
+            "3:00 PM - 4:00 PM",
+            "5:00 PM - 6:00 PM"
+        ],
+        "biography": "Laura is an expert in prenatal fitness and women's health training.",
+        "skills": [
+            "Prenatal Fitness",
+            "Women's Health",
+            "Postpartum Recovery"
+        ]
+    },
+    {
+        "_id" : 9,
+        "name": "James White",
+        "image": "https://source.unsplash.com/400x400/?martial-arts,man",
+        "age": 34,
+        "experience": "9 years",
+        "available_slots": [
+            "8:00 AM - 9:00 AM",
+            "12:00 PM - 1:00 PM",
+            "4:00 PM - 5:00 PM"
+        ],
+        "biography": "James focuses on martial arts training and self-defense techniques for all skill levels.",
+        "skills": [
+            "Martial Arts",
+            "Self-Defense",
+            "Combat Fitness"
+        ]
+    },
+    {
+        "_id": 10,
+        "name": "Olivia Green",
+        "image": "https://source.unsplash.com/400x400/?pilates,woman",
+        "age": 27,
+        "experience": "4 years",
+        "available_slots": [
+            "6:00 AM - 7:00 AM",
+            "9:00 AM - 10:00 AM",
+            "2:00 PM - 3:00 PM"
+        ],
+        "biography": "Olivia is a certified Pilates instructor who emphasizes core strength and flexibility.",
+        "skills": [
+            "Pilates",
+            "Core Strength",
+            "Flexibility Training"
+        ]
+    }
+]

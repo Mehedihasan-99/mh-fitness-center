@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/UseAuth';
-import axios from 'axios';
 import useAxiosClient from '../../Hooks/useAxiosClient';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import GoogleLogin from '../../components/GoogleLogin/GoogleLogin';
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -16,39 +16,37 @@ const SignUp = () => {
 
 
     const onSubmit = async (data) => {
-        try {
-            // User Creation
-            await createUser(data.email, data.password);
-            console.log("User created successfully");
+        // 1. image upload to image bb
+        const imageFile = { image: data.image[0] };
+        const res = await axiosClient.post(image_hosting_api, imageFile, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
 
-            const imageFile = { image: data.image[0] };
-            const res = await axiosClient.post(image_hosting_api, imageFile, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
+        if (!res.data.success) {
+            Swal.fire({
+                icon: "error",
+                title: "Image Upload Failed",
+                text: "Please try again later.",
             });
+            return;
+        };
+        const photo = res.data.data.display_url;
+        const name = data.name;
 
-            if (!res.data.success) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Image Upload Failed",
-                    text: "Please try again later.",
-                });
-                return;
-            }
-
-            // Update Profile
-            const photo = res.data.data.display_url;
-            const name = data.name;
+        try {
+            // 2. user Registration
+            await createUser(data.email, data.password);
+            
+            //  3. save username and profile phote 
             await updateUserProfile(name, photo);
-
             const userInfo = {
                 name,
                 image: photo,
                 email: data.email,
                 role: "member",
             };
-
             const userRes = await axiosClient.post("/users", userInfo);
 
             if (userRes.data.insertedId) {
@@ -62,8 +60,6 @@ const SignUp = () => {
                 navigate(location?.state?.from || "/");
             }
         } catch (error) {
-            console.error("Error during sign-up:", error);
-
             const message = getAuthErrorMessage(error.code);
             console.log('error: ', error)
             Swal.fire({
@@ -93,7 +89,7 @@ const SignUp = () => {
             <div className="w-11/12 mx-auto lg:max-w-7xl">
                 <div className="flex items-center justify-center min-h-screen bg-gray-100">
                     <div className="w-full max-w-lg p-16 bg-white rounded-lg shadow-md">
-                        <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">Login</h2>
+                        <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">Sign Up</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
                             {/* Name Field */}
@@ -193,7 +189,7 @@ const SignUp = () => {
                                     type="submit"
                                     className='w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                                 >
-                                    Login
+                                    Sign Up
                                 </button>
                             </div>
                         </form>
@@ -201,11 +197,12 @@ const SignUp = () => {
                         {/* Additional Links */}
                         <div className="mt-4 text-sm text-center text-gray-600">
                             <p>
-                                Don’t have an account?{" "}
-                                <a href="/sign-up" className="text-blue-500 hover:underline">
-                                    Register
-                                </a>
+                                Already have an account?{" "}
+                                <Link to="/sign-up" className="text-blue-500 hover:underline">
+                                    Login
+                                </Link>
                             </p>
+                            <GoogleLogin />
                         </div>
                     </div>
                 </div>
