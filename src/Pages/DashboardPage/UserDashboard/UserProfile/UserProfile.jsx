@@ -1,4 +1,4 @@
-import useAuth from "../../../Hooks/UseAuth";
+import useAuth from "../../../../Hooks/UseAuth";
 
 const UserProfile = () => {
     const { user, loading } = useAuth();

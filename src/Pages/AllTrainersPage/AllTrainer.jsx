@@ -30,12 +30,12 @@ const AllTrainer = () => {
 
 
     return (
-        <div className='bg-slate-200 md:w-11/12 mx-auto lg:max-w-7xl flex flex-col items-center p-4 '>
+        <div className='bg-slate-200 flex flex-col items-center p-4 '>
             <div className='w-full'>
                 <div className='w-80 mx-auto'>
                     <SectionTitle firstTitle='All' secondTitle='Trainers' />
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                     {
                         trainers.map(trainer => (
                             <div key={trainer._id} className="overflow-hidden rounded bg-white shadow-md shadow-slate-200">

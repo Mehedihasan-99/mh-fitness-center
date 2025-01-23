@@ -5,23 +5,32 @@ import Loading from "../Loading/Loading";
 
 const Navbar = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false);
-    const { user, loading, logout } = useAuth()
+    const { user, loading, logout } = useAuth();
 
 
     const NavLinks = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/trainers'>Trainers</NavLink></li>
-        <li><NavLink to='/classes'>Classes</NavLink></li>
+        <li><NavLink
+            to='/'
+            className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">Home</NavLink></li>
+        <li><NavLink
+            to='/trainers'
+            className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "> Trainers</NavLink></li>
+        <li><NavLink
+            to='/classes'
+            className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">Classes</NavLink></li>
         {
-            user && <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+            user && <li><NavLink
+                to='/dashboard'
+                className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">Dashboard</NavLink></li>
         }
-        <li><NavLink to='/community'>Community</NavLink></li>
+        <li><NavLink
+            to='/community'
+            className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">Community</NavLink></li>
     </>
-
-   if (loading) return <Loading />
+    if (loading) return <Loading />
 
     return (
-        <div className="sticky top-0 z-50 bg-[#ed002e]">
+        <div className="sticky top-0 z-50 bg-slate-300">
             <div className="w-11/12 relative mx-auto lg:max-w-5xl">
                 <nav
                     aria-label="main navigation"

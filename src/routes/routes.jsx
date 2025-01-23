@@ -6,8 +6,11 @@ import Home from "../Pages/HomePage/Home/Home";
 import AllTrainer from "../Pages/AllTrainersPage/AllTrainer";
 import TrainerDetails from "../Pages/TrainerDetailsPage/TrainerDetails";
 import DashboardLayout from "../Layout/DashboardLayout";
-import UserProfile from "../Pages/DashboardPage/UserProfile/UserProfile";
 import Loading from "../components/Loading/Loading";
+import Newsletter from "../Pages/DashboardPage/Newsletter/Newsletter";
+import AllTrainers from "../components/AllTrainers/AllTrainers";
+import UserProfile from "../Pages/DashboardPage/UserDashboard/UserProfile/UserProfile";
+import AddClass from "../Pages/DashboardPage/AdminDashboard/AddClass/AddClass";
 
 
 const Routes = createBrowserRouter([
@@ -51,11 +54,11 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: 'admin/newsletters',
-                element: <h2>NEwsletter</h2>
+                element: <Newsletter/>
             },
             {
                 path: 'admin/all-trainers',
-                element: <h2>admin/all-trainers</h2>
+                element: <AllTrainers />
             },
             {
                 path: 'admin/applied-trainer',
@@ -67,7 +70,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'admin/add-class',
-                element: <h2>admin/add-class</h2>
+                element: <AddClass />
             },
             {
                 path: 'admin/add-forum',

@@ -10,6 +10,7 @@ import {
     signOut,
     updateProfile,
 } from "firebase/auth";
+import useAxiosClient from "../Hooks/useAxiosClient";
 
 
 
@@ -22,9 +23,9 @@ const googleProvider = new GoogleAuthProvider()
 const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    
+    const axiosClient = useAxiosClient()
 
-    console.log('user :', user)
+    // console.log('user :', user)
 
     // user create 
     const createUser = (email, password) => {
@@ -68,7 +69,20 @@ const AuthProviders = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+            console.log('currentUser :', currentUser)
             setUser(currentUser);
+            if (currentUser) {
+                const userInfo = { email: currentUser.email } 
+                axiosClient.post('/jwt', userInfo)
+                    .then((res) => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                        }
+                    })
+            }
+            else {
+                localStorage.removeItem('access-token')
+            }
             setLoading(false);
         });
 

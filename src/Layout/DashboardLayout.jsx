@@ -21,7 +21,7 @@ const DashboardLayout = () => {
     if (loading) return <Loading />
 
     return (
-        <div className="lg:flex">
+        <div className="lg:flex bg-blue-100">
             <div className="w-72">
                 {/*  <!-- Mobile trigger --> */}
                 <button
@@ -57,7 +57,7 @@ const DashboardLayout = () => {
                 <aside
                     id="nav-menu-2"
                     aria-label="Side navigation"
-                    className={`fixed top-0 bottom-0 left-0 z-30 flex w-72 flex-col border-r border-r-slate-200 bg-[#ed002e]  transition-transform lg:translate-x-0 ${isSideNavOpen ? "translate-x-0" : " -translate-x-full"
+                    className={`max-w-7xl fixed top-0 bottom-0 z-30 flex w-72 flex-col border-r border-r-slate-200 bg-slate-300 transition-transform lg:translate-x-0 ${isSideNavOpen ? "translate-x-0" : " -translate-x-full"
                         }`}
                 >
                     <Link to="/" className="p-4" >

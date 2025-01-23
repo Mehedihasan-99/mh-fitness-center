@@ -38,7 +38,7 @@ const SignUp = () => {
         try {
             // 2. user Registration
             await createUser(data.email, data.password);
-            
+
             //  3. save username and profile phote 
             await updateUserProfile(name, photo);
             const userInfo = {
@@ -60,25 +60,14 @@ const SignUp = () => {
                 navigate(location?.state?.from || "/");
             }
         } catch (error) {
-            const message = getAuthErrorMessage(error.code);
-            console.log('error: ', error)
+            const message = error.code.split('/')[1]
+            console.log('error :', message)
             Swal.fire({
                 icon: "error",
                 title: "Sign-Up Failed",
-                text: message,
+                text: message ,
             });
         }
-    };
-
-    const getAuthErrorMessage = (code) => {
-        const messages = {
-            "auth/email-already-in-use": "The email address is already registered.",
-            "auth/user-not-found": "User not found. Please check your email.",
-            "auth/wrong-password": "Incorrect password. Please try again.",
-            "auth/too-many-requests": "Too many failed attempts. Try again later.",
-            "auth/invalid-credential": "Invalid credentials provided.",
-        };
-        return messages[code] || "An unknown error occurred. Please try again.";
     };
 
 
@@ -202,7 +191,9 @@ const SignUp = () => {
                                     Login
                                 </Link>
                             </p>
-                            <GoogleLogin />
+                            <div className="flex justify-center mt-4">
+                                <GoogleLogin />
+                            </div>
                         </div>
                     </div>
                 </div>

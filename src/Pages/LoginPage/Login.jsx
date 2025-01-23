@@ -4,6 +4,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import useAuth from "../../Hooks/UseAuth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
 
 const LoginForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -144,6 +145,9 @@ const LoginForm = () => {
                                 Register
                             </a>
                         </p>
+                        <div className="flex justify-center mt-4">
+                            <GoogleLogin />
+                        </div>
                     </div>
                 </div>
             </div>
