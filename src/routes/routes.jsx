@@ -11,6 +11,7 @@ import Newsletter from "../Pages/DashboardPage/Newsletter/Newsletter";
 import AllTrainers from "../components/AllTrainers/AllTrainers";
 import UserProfile from "../Pages/DashboardPage/UserDashboard/UserProfile/UserProfile";
 import AddClass from "../Pages/DashboardPage/AdminDashboard/AddClass/AddClass";
+import Allclass from "../Pages/ClassPage/AllClass/AllClass";
 
 
 const Routes = createBrowserRouter([
@@ -32,7 +33,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/classes',
-                element: <h2>All Class</h2>
+                element: <Allclass />
             },
             {
                 path: '/community',

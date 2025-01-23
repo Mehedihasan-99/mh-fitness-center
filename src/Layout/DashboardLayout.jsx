@@ -4,14 +4,14 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaBackward, FaCalendarCheck, FaHome, FaUser } from "react-icons/fa";
 import { FaA, FaLeaf } from "react-icons/fa6";
 import Loading from "../components/Loading/Loading";
+import useAdmin from "../Hooks/useAdmin";
 
 const DashboardLayout = () => {
     const { user, logout, loading } = useAuth();
     const [isSideNavOpen, setIsSideNavOpen] = useState(false);
     const navigate = useNavigate();
-
-
-    const admin = true
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin)
 
     const handleLogout = () => {
         logout();
@@ -76,55 +76,7 @@ const DashboardLayout = () => {
                         <div>
                             <ul className="flex flex-1 flex-col gap-1 py-3">
                                 {
-                                    user && <>
-                                        <li className="px-3">
-                                            <NavLink
-                                                to="/dashboard"
-                                                className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
-                                            >
-                                                <FaUser />
-                                                <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                                                    User Profile
-                                                </div>
-                                            </NavLink>
-                                        </li>
-                                        <li className="px-3">
-                                            <NavLink
-                                                to="activity-log"
-                                                className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
-                                            >
-                                                <FaA />
-                                                <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                                                    Activity Log
-                                                </div>
-                                            </NavLink>
-                                        </li>
-                                        <li className="px-3">
-                                            <NavLink
-                                                to="be-a-trainer"
-                                                className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
-                                            >
-                                                <FaLeaf />
-                                                <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                                                    Be A Trainer
-                                                </div>
-                                            </NavLink>
-                                        </li>
-                                        <li className="px-3">
-                                            <NavLink
-                                                to="booked-trainer"
-                                                className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
-                                            >
-                                                <FaCalendarCheck />
-                                                <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                                                    Booked Trainer
-                                                </div>
-                                            </NavLink>
-                                        </li>
-                                    </>
-                                }
-                                {
-                                    admin && <>
+                                    isAdmin ? <>
                                         <li className="px-3">
                                             <NavLink
                                                 to="admin/newsletters"
@@ -191,55 +143,101 @@ const DashboardLayout = () => {
                                                 </div>
                                             </NavLink>
                                         </li>
+                                    </> : <>
+                                        <li className="px-3">
+                                            <NavLink
+                                                to="/dashboard"
+                                                className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                                            >
+                                                <FaUser />
+                                                <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
+                                                    User Profile
+                                                </div>
+                                            </NavLink>
+                                        </li>
+                                        <li className="px-3">
+                                            <NavLink
+                                                to="activity-log"
+                                                className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                                            >
+                                                <FaA />
+                                                <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
+                                                    Activity Log
+                                                </div>
+                                            </NavLink>
+                                        </li>
+                                        <li className="px-3">
+                                            <NavLink
+                                                to="be-a-trainer"
+                                                className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                                            >
+                                                <FaLeaf />
+                                                <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
+                                                    Be A Trainer
+                                                </div>
+                                            </NavLink>
+                                        </li>
+                                        <li className="px-3">
+                                            <NavLink
+                                                to="booked-trainer"
+                                                className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                                            >
+                                                <FaCalendarCheck />
+                                                <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
+                                                    Booked Trainer
+                                                </div>
+                                            </NavLink>
+                                        </li>
                                     </>
-                                }
-                            </ul>
-                        </div>
 
-                    </nav>
-                    <footer className="border-t border-slate-200 p-3">
-                        <ul>
-                            <li className="px-3">
-                                <Link
-                                    to="/"
-                                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
-                                >
-                                    <FaHome />
-                                    <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                                        Home
-                                    </div>
-                                </Link>
-                            </li>
-                            <li className="px-3">
-                                <div
-                                    className="flex items-center gap-3 w-full rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
-                                >
-                                    <FaBackward />
-                                    <button className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm"
-                                        onClick={handleLogout}>
-                                        logout
-                                    </button>
-                                </div>
-                            </li>
-                        </ul>
-                    </footer>
-                </aside>
-                {/*  <!-- Backdrop --> */}
+                                } 
+                            </ul >
+                        </div >
+
+                    </nav >
+    <footer className="border-t border-slate-200 p-3">
+        <ul>
+            <li className="px-3">
+                <Link
+                    to="/"
+                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                >
+                    <FaHome />
+                    <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
+                        Home
+                    </div>
+                </Link>
+            </li>
+            <li className="px-3">
                 <div
-                    className={`fixed top-0 bottom-0 left-0 right-0 z-30 bg-slate-900/20 transition-colors sm:hidden ${isSideNavOpen ? "block" : "hidden"
-                        }`}
-                    onClick={() => setIsSideNavOpen(false)}
-                ></div>
-                {/*  <!-- End Side navigation menu with content separator --> */}
-            </div>
-
-            <div className="min-h-screen bg-gray-100 p-4 md:p-10 lg:p-20 flex-1"
-                onClick={() => setIsSideNavOpen(false)}>
-                <div className="p-4 ">
-                    <Outlet />
+                    className="flex items-center gap-3 w-full rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                >
+                    <FaBackward />
+                    <button className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm"
+                        onClick={handleLogout}>
+                        logout
+                    </button>
                 </div>
-            </div>
+            </li>
+        </ul>
+    </footer>
+                </aside >
+    {/*  <!-- Backdrop --> */ }
+    < div
+className = {`fixed top-0 bottom-0 left-0 right-0 z-30 bg-slate-900/20 transition-colors sm:hidden ${isSideNavOpen ? "block" : "hidden"
+    }`}
+onClick = {() => setIsSideNavOpen(false)}
+                ></div >
+    {/*  <!-- End Side navigation menu with content separator --> */ }
+            </div >
+
+    <div className="min-h-screen bg-gray-100 p-4 md:p-10 lg:p-20 flex-1"
+        onClick={() => setIsSideNavOpen(false)}>
+        <div className="p-4 ">
+            <Outlet />
         </div>
+    </div>
+        </div >
     );
 };
 

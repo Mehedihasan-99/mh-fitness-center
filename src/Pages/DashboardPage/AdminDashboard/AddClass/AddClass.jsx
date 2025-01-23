@@ -61,8 +61,9 @@ const AddClass = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
                 {/*  <!-- Body--> */}
                 <div className="p-6">
-                    <header className="mb-4 text-center">
-                        <h3 className="text-xl font-medium text-slate-700">Login</h3>
+                    <header className="mb-4 md:mb-10 text-center">
+                        <h3 className=" text-xl font-bold text-slate-700 uppercase">add new class</h3>
+                        <p className="text text-xs text-purple-300">add a new class to ensure and update materials</p>
                     </header>
                     <div className="flex flex-col md:space-y-8">
                         <div className="grid md:grid-cols-2 md:gap-4">
@@ -121,9 +122,9 @@ const AddClass = () => {
                     </div>
                 </div>
                 {/*  <!-- Action base sized basic button --> */}
-                <div className="flex justify-end p-6 ">
-                    <button className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
-                        <span>Log in</span>
+                <div className="flex justify-center p-6 ">
+                    <button className="h-10 rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+                        <span>Add Class</span>
                     </button>
                 </div>
             </form>
