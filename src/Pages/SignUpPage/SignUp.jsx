@@ -47,7 +47,7 @@ const SignUp = () => {
                 email: data.email,
                 role: "member",
             };
-            const userRes = await axiosClient.post("/users", userInfo);
+            const userRes = await axiosClient.patch("/users", userInfo);
 
             if (userRes.data.insertedId) {
                 Swal.fire({

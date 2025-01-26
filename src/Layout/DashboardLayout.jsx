@@ -190,53 +190,51 @@ const DashboardLayout = () => {
                                         </li>
                                     </>
 
-                                } 
+                                }
                             </ul >
                         </div >
 
                     </nav >
-    <footer className="border-t border-slate-200 p-3">
-        <ul>
-            <li className="px-3">
-                <Link
-                    to="/"
-                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
-                >
-                    <FaHome />
-                    <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-                        Home
-                    </div>
-                </Link>
-            </li>
-            <li className="px-3">
-                <div
-                    className="flex items-center gap-3 w-full rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
-                >
-                    <FaBackward />
-                    <button className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm"
-                        onClick={handleLogout}>
-                        logout
-                    </button>
-                </div>
-            </li>
-        </ul>
-    </footer>
+                    <footer className="border-t border-slate-200 p-3">
+                        <ul>
+                            <li className="px-3">
+                                <Link
+                                    to="/"
+                                    className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                                >
+                                    <FaHome />
+                                    <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
+                                        Home
+                                    </div>
+                                </Link>
+                            </li>
+                            <li className="px-3">
+                                <div
+                                    className="flex items-center gap-3 w-full rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
+                                >
+                                    <FaBackward />
+                                    <button className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm"
+                                        onClick={handleLogout}>
+                                        logout
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </footer>
                 </aside >
-    {/*  <!-- Backdrop --> */ }
-    < div
-className = {`fixed top-0 bottom-0 left-0 right-0 z-30 bg-slate-900/20 transition-colors sm:hidden ${isSideNavOpen ? "block" : "hidden"
-    }`}
-onClick = {() => setIsSideNavOpen(false)}
+                < div
+                    className={`fixed top-0 bottom-0 left-0 right-0 z-30 bg-slate-900/20 transition-colors sm:hidden ${isSideNavOpen ? "block" : "hidden"
+                        }`}
+                    onClick={() => setIsSideNavOpen(false)}
                 ></div >
-    {/*  <!-- End Side navigation menu with content separator --> */ }
             </div >
 
-    <div className="min-h-screen bg-gray-100 p-4 md:p-10 lg:p-20 flex-1"
-        onClick={() => setIsSideNavOpen(false)}>
-        <div className="p-4 ">
-            <Outlet />
-        </div>
-    </div>
+            <div className="min-h-screen bg-gray-100 p-4 md:p-10 lg:py-20 flex-1"
+                onClick={() => setIsSideNavOpen(false)}>
+                <div className="p-4 ">
+                    <Outlet />
+                </div>
+            </div>
         </div >
     );
 };

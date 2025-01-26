@@ -12,6 +12,8 @@ import AllTrainers from "../components/AllTrainers/AllTrainers";
 import UserProfile from "../Pages/DashboardPage/UserDashboard/UserProfile/UserProfile";
 import AddClass from "../Pages/DashboardPage/AdminDashboard/AddClass/AddClass";
 import Allclass from "../Pages/ClassPage/AllClass/AllClass";
+import ActivityLog from "../Pages/DashboardPage/UserDashboard/ActivityLog/ActivityLog";
+import BeATrainer from "../Pages/DashboardPage/UserDashboard/BeATrainer/BeATrainer";
 
 
 const Routes = createBrowserRouter([
@@ -83,11 +85,11 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'activity-log',
-                element: <h2>activity-log</h2>
+                element: <ActivityLog />
             },
             {
                 path: 'be-a-trainer',
-                element: <h2>be-a-trainer</h2>
+                element: <BeATrainer />
             },
             {
                 path: 'booked-trainer',

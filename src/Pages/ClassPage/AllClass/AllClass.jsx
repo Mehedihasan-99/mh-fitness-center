@@ -22,7 +22,7 @@ const Allclass = () => {
                                 <h3 className="text-xl md:text-3xl mb-2  font-medium text-slate-700">
                                     {item.name}
                                 </h3>
-                                <p className="text-sm text-slate-400"> {item.details.slice(0,100)}.....</p>
+                                <p className="text-sm text-slate-400"> {item.details.slice(0,150)}.....</p>
                             </header>
                         </div>
                     </div>)

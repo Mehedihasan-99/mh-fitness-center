@@ -16,8 +16,9 @@ const GoogleLogin = () => {
                 const userInfo = {
                     email: result.user?.email,
                     name: result.user?.displayName,
+                    image: result.user?.photoURL,
                 };
-                axiosClient.post("/users", userInfo)
+                axiosClient.patch("/users", userInfo)
                     .then(() => {
                         navigate(location.state ? location.state?.from?.pathname : "/");
                         Swal.fire({
