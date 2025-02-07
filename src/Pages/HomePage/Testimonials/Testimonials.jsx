@@ -59,14 +59,15 @@ const Testimonials = () => {
 
     return (
         <div className="flex flex-col items-center bg-gray-100 py-16 mb-4 md:mb-10 lg:mb-20">
-            <div className="min-w-80 border-4 mx-auto">
+            <div className="min-w-80 w-full text-center mx-auto">
                 <SectionTitle
-                    secondTitle='testimonials'
+                    firstTitle='testimonials'
+                    secondTitle='section'
                 />
             </div>
             <div className="w-full flex flex-col md:flex-row items-center gap-5">
-                <div className="px-4 py-12 ">
-                    <h2 className="text-3xl font-bold text-center mb-8">What Members Say</h2>
+                <div className="px-4 pb-12 ">
+                    <h2 className="text-xl font-bold text-center mb-8">What Members Say</h2>
                     <div className="relative">
                         {/* Testimonial Cards */}
                         <div className="flex items-center justify-center gap-6 overflow-hidden">

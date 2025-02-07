@@ -56,7 +56,7 @@ const Featured = () => {
         <div data-aos="fade-up">
             <section className="mb-4 md:mb-10 lg:mb-20 bg-gray-50 py-16">
                 <div className="max-w-6xl mx-auto px-6 text-center">
-                    <SectionTitle firstTitle='Choose' secondTitle="Program"
+                    <SectionTitle firstTitle='Our' secondTitle="Program"
                     describetion='Training Studio is free CSS template for gyms and fitness centers. You are allowed to use this layout for your business website.' />
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {features.map((feature) => (

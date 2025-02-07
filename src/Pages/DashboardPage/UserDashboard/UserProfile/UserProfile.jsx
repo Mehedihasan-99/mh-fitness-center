@@ -1,28 +1,14 @@
+import Loading from "../../../../components/Loading/Loading";
+import useAdmin from "../../../../Hooks/useAdmin";
 import useAuth from "../../../../Hooks/UseAuth";
+import useTrainer from "../../../../Hooks/useTrainer";
 
 const UserProfile = () => {
     const { user, loading } = useAuth();
+    const [isAdmin] = useAdmin();
+    const [isTrainer] = useTrainer()
 
-    if (loading) {
-        <div className="relative w-full">
-            <label
-                id="p01d-label"
-                className="absolute top-0 left-0 mb-0 block w-1/4 text-center text-xs text-white"
-            >
-                <span className="sr-only">uploading</span> 25%
-            </label>
-            <progress
-                aria-labelledby="p01d-label"
-                id="p01d"
-                max="100"
-                value="25"
-                className="block w-full overflow-hidden rounded bg-slate-100 [&::-webkit-progress-bar]:bg-slate-100 [&::-webkit-progress-value]:bg-emerald-500 [&::-moz-progress-bar]:bg-emerald-500"
-            >
-                25%
-            </progress>
-        </div>
-        return
-    }
+    if (loading) return <Loading />
 
     return (
         <div>
@@ -44,6 +30,7 @@ const UserProfile = () => {
                             Name : {user.displayName}
                         </h3>
                         <p className=" text-slate-400">Email : {user.email}</p>
+                        <p className=" text-slate-400">Role : {isAdmin ? 'Admin' : isTrainer ? 'Trainer' : 'User'}</p>
                         <p className=" text-slate-400">Last Login : {user.metadata.lastSignInTime}</p>
                     </header>
                 </div>

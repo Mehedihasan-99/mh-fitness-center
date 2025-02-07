@@ -3,17 +3,22 @@ import MainLayout from "../Layout/MainLayout";
 import Login from "../Pages/LoginPage/Login";
 import SignUp from "../Pages/SignUpPage/SignUp";
 import Home from "../Pages/HomePage/Home/Home";
-import AllTrainer from "../Pages/AllTrainersPage/AllTrainer";
-import TrainerDetails from "../Pages/TrainerDetailsPage/TrainerDetails";
 import DashboardLayout from "../Layout/DashboardLayout";
-import Loading from "../components/Loading/Loading";
-import Newsletter from "../Pages/DashboardPage/Newsletter/Newsletter";
-import AllTrainers from "../components/AllTrainers/AllTrainers";
 import UserProfile from "../Pages/DashboardPage/UserDashboard/UserProfile/UserProfile";
 import AddClass from "../Pages/DashboardPage/AdminDashboard/AddClass/AddClass";
-import Allclass from "../Pages/ClassPage/AllClass/AllClass";
+import AllClass from "../Pages/ClassPage/AllClass/AllClass";
 import ActivityLog from "../Pages/DashboardPage/UserDashboard/ActivityLog/ActivityLog";
 import BeATrainer from "../Pages/DashboardPage/UserDashboard/BeATrainer/BeATrainer";
+import AppliedTrainer from "../Pages/DashboardPage/AdminDashboard/AppliedTrainer/AppliedTrainer";
+import Trainers from "../Pages/DashboardPage/AdminDashboard/Trainers/Trainers";
+import AllTrainer from "../Pages/AllTrainersPage/AllTrainer";
+import AddForum from "../Pages/DashboardPage/AdminDashboard/AddForum/AddForum";
+import Newsletter from "../Pages/DashboardPage/AdminDashboard/NewsLetter/NewsLetter";
+import CommunityForumPage from "../Pages/CommunityForumPage/CommunityForumPage";
+import TrainersDetails from "../Pages/AllTrainersPage/TrainersDetails";
+import AddNewSlot from "../Pages/DashboardPage/TrainerDashboard/AddNewSlot/AddNewSlot";
+import TrainerRoutes from "./Trainerroutes";
+import ManageSlot from "../Pages/DashboardPage/TrainerDashboard/ManageSlot/ManageSlot";
 
 
 const Routes = createBrowserRouter([
@@ -31,15 +36,15 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/trainers/:id',
-                element: <TrainerDetails />
+                element: < TrainersDetails />,
             },
             {
                 path: '/classes',
-                element: <Allclass />
+                element: <AllClass />
             },
             {
                 path: '/community',
-                element: <Loading />
+                element: <CommunityForumPage />
             },
             {
                 path: '/login',
@@ -57,15 +62,15 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: 'admin/newsletters',
-                element: <Newsletter/>
+                element: <Newsletter />
             },
             {
                 path: 'admin/all-trainers',
-                element: <AllTrainers />
+                element: <Trainers />
             },
             {
                 path: 'admin/applied-trainer',
-                element: <h2>admin/applied-trainer</h2>
+                element: <AppliedTrainer />
             },
             {
                 path: 'admin/balance',
@@ -77,11 +82,31 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'admin/add-forum',
-                element: <h2>admin/add-forum</h2>
+                element: <AddForum />
+            },
+            // Trainer Routes Start
+            {
+                path: 'trainer/manage-slots',
+                element: <TrainerRoutes>
+                    <ManageSlot/>
+                </TrainerRoutes>
             },
             {
-                path: '/dashboard',
-                element: <UserProfile/>
+                path: 'trainer/add-slots',
+                element: <TrainerRoutes>
+                    <AddNewSlot />
+                </TrainerRoutes>
+            },
+            {
+                path: 'trainer/add-forum',
+                element: <TrainerRoutes>
+                    <AddForum />
+                </TrainerRoutes>
+            },
+            // Trainer Routes End
+            {
+                path: 'profile',
+                element: <UserProfile />
             },
             {
                 path: 'activity-log',

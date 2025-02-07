@@ -31,7 +31,7 @@ const LoginForm = () => {
                     title: "Success!",
                     text: "Login Successfully",
                     icon: "success",
-                    confirmButtonText: "Close",
+                    timer: 2000,
                 });
                 reset();
                 setDisabled(true);
@@ -67,9 +67,12 @@ const LoginForm = () => {
                         <div className="mb-4">
                             <label
                                 htmlFor="email"
-                                className="block text-sm font-medium text-gray-700"
+                                className={`flex items-center gap-1 text-sm  font-medium  text-gray-700${errors.email ? "border-red-500" : "border-gray-300"
+                                    }`}
                             >
-                                Email
+                                Email{errors.email && (
+                                    <span className="text-red-500">*</span>
+                                )}
                             </label>
                             <input
                                 id="email"
@@ -79,18 +82,18 @@ const LoginForm = () => {
                                 className={`mt-1 block w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${errors.email ? "border-red-500" : "border-gray-300"
                                     }`}
                             />
-                            {errors.email && (
-                                <span className="text-sm text-red-500">{errors.email.message}</span>
-                            )}
                         </div>
 
                         {/* Password Field */}
                         <div className="mb-4">
                             <label
                                 htmlFor="password"
-                                className="block text-sm font-medium text-gray-700"
+                                className={`flex items-center gap-1 text-sm  font-medium  text-gray-700${errors.password ? "border-red-500" : "border-gray-300"
+                                    }`}
                             >
-                                Password
+                                Password{errors.password && (
+                                    <span className="text-red-500">*</span>
+                                )}
                             </label>
                             <input
                                 id="password"
@@ -100,11 +103,6 @@ const LoginForm = () => {
                                 className={`mt-1 block w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${errors.password ? "border-red-500" : "border-gray-300"
                                     }`}
                             />
-                            {errors.password && (
-                                <span className="text-sm text-red-500">
-                                    {errors.password.message}
-                                </span>
-                            )}
                         </div>
 
                         {/* Captcha */}

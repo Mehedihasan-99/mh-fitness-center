@@ -35,13 +35,13 @@ const ActivityLog = () => {
                             <tr className="transition-colors duration-300 hover:bg-slate-50">
                                 <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 "> {userInfo.name}</td>
                                 <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{userInfo.email}</td>
-                                <td className={`h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ${userInfo.status === 'pending' ? 'bg-yellow-400' : 'bg-green-500'}`}>{userInfo.status}</td>
+                                <td className={`h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 font-semibold ${userInfo.status === 'pending' && 'bg-yellow-400' } ${userInfo.status === 'confirm' ? 'bg-green-200 text-blue-700 ' : 'bg-red-300 ' }`}>{userInfo.status}</td>
                             </tr>
                         }
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
+        </div >
     );
 };
 

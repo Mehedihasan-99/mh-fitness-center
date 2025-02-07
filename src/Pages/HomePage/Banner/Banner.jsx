@@ -6,10 +6,10 @@ const Banner = () => {
         const slider = new Glide(".glide-01", {
             type: "carousel",
             focusAt: "center",
-            perView: 1, // Ensure only one slide is visible at a time
+            perView: 1,
             autoplay: 5000,
             animationDuration: 700,
-            gap: 0, // Remove gap for seamless full-width experience
+            gap: 0,
             breakpoints: {
                 1024: {
                     perView: 1,

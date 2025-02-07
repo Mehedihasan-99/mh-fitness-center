@@ -24,7 +24,7 @@ const About = () => {
                 {/* Left Side - Text Details */}
                 <div data-aos="fade-right" className="flex flex-col justify-center  md:text-left md:w-1/2 mb-8 md:mb-0">
                     <h2 className="text-2xl font-bold text-gray-800 mb-6">
-                        The Story Behind MH Fitness Center
+                       Behind The Story of MH Fitness Center
                     </h2>
                     <p className="text-sm text-gray-600 mb-4">
                         MH Fitness Center began with a simple vision: to create a space
@@ -36,7 +36,7 @@ const About = () => {
                 </div>
                 <div data-aos="fade-left" className="md:w-1/2">
                     <img
-                        src='https://i.ibb.co.com/yNsmmvk/images-6.jpg'
+                        src='https://i.ibb.co.com/0JFmn2L/images-6.jpg'
                         alt=""
                         className="w-10/12 mx-auto"
                     />

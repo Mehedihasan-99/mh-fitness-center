@@ -20,7 +20,7 @@ const Navbar = () => {
             className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">Classes</NavLink></li>
         {
             user && <li><NavLink
-                to='/dashboard'
+                to='/dashboard/profile'
                 className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">Dashboard</NavLink></li>
         }
         <li><NavLink
