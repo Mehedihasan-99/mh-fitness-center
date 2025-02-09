@@ -19,6 +19,8 @@ import TrainersDetails from "../Pages/AllTrainersPage/TrainersDetails";
 import AddNewSlot from "../Pages/DashboardPage/TrainerDashboard/AddNewSlot/AddNewSlot";
 import TrainerRoutes from "./Trainerroutes";
 import ManageSlot from "../Pages/DashboardPage/TrainerDashboard/ManageSlot/ManageSlot";
+import TrainerBookedPage from "../Pages/TrainerBookedPage/TrainerBookedPage";
+import Payment from "../Pages/PaymentPage/Payment";
 
 
 const Routes = createBrowserRouter([
@@ -45,6 +47,14 @@ const Routes = createBrowserRouter([
             {
                 path: '/community',
                 element: <CommunityForumPage />
+            },
+            {
+                path: '/:name/booked-slot/:id',
+                element: <TrainerBookedPage />
+            },
+            {
+                path: '/payment' ,
+                element: <Payment/>
             },
             {
                 path: '/login',
@@ -119,7 +129,7 @@ const Routes = createBrowserRouter([
             {
                 path: 'booked-trainer',
                 element: <h2>booked-trainer</h2>
-            }
+            },
         ]
     }
 ])

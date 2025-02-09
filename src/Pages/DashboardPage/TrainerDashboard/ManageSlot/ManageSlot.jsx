@@ -30,7 +30,7 @@ const ManageSlot = () => {
                     slots.length > 0  ?
                         <table className="w-full text-left border border-separate rounded border-slate-200">
                             <tbody>
-                                <tr className="bg-slate-400 *:h-12 text-center">
+                                <tr className="bg-blue-400 *:h-12 text-center">
                                     <th scope="col" className="text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 ">Day</th>
                                     <th scope="col" className="text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 ">Slot Name</th>
                                     <th scope="col" className="text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 ">Class Time</th>

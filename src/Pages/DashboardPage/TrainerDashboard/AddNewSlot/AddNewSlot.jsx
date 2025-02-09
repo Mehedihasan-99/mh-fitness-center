@@ -11,8 +11,7 @@ import { useQuery } from '@tanstack/react-query';
 const AddNewSlot = () => {
     const { register, handleSubmit, reset } = useForm();
     const { user, loading } = useAuth();
-    const [classes] = useClass()
-    // const [trainerInfo, setTrainerInfo] = useState(null); // initialize as null
+    const [classes] = useClass();
     const axiosClient = useAxiosClient();
     const axiosSecure = useAxiosSecure();
 
