@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AvailableSlot from "../../components/AvailableSlot/AvailableSlot";
 import useAxiosClient from "../../Hooks/useAxiosClient";
 import { useQuery } from "@tanstack/react-query";
@@ -7,7 +7,6 @@ import Loading from "../../components/Loading/Loading";
 const TrainersDetails = () => {
     const axiosClient = useAxiosClient();
     const { id } = useParams();
-    const navigate = useNavigate()
 
     const { data: trainer, isLoading, error } = useQuery({
         queryKey: ['trainerDetails', id],

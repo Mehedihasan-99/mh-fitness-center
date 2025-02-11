@@ -14,17 +14,17 @@ const UserProfile = () => {
         <div>
             <div className="overflow-hidden rounded bg-white text-center text-slate-500 shadow-md shadow-slate-200">
                 {/*  <!-- Image --> */}
-                <figure className="p-6 md:p-10 pb-0">
+                <figure className=" p-6 md:p-10">
                     <span className="relative inline-flex h-40 w-80 items-center justify-center rounded-full text-white">
                         <img
                             src={user?.photoURL}
-                            alt="user name"
+                            alt={user?.displayName}
                             title={user?.displayName}
-                            className="max-w-full rounded-full"
+                            className="max-w-full h-full rounded-full"
                         />
                     </span>
                 </figure>
-                <div className="p-6">
+                <div className="p-6 pt-0">
                     <header className="mb-4 space-y-2">
                         <h3 className="text-xl font-medium text-slate-700">
                             Name : {user.displayName}

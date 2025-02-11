@@ -53,10 +53,6 @@ const Routes = createBrowserRouter([
                 element: <TrainerBookedPage />
             },
             {
-                path: '/payment' ,
-                element: <Payment/>
-            },
-            {
                 path: '/login',
                 element: <Login />
             },
@@ -98,7 +94,7 @@ const Routes = createBrowserRouter([
             {
                 path: 'trainer/manage-slots',
                 element: <TrainerRoutes>
-                    <ManageSlot/>
+                    <ManageSlot />
                 </TrainerRoutes>
             },
             {
@@ -129,6 +125,10 @@ const Routes = createBrowserRouter([
             {
                 path: 'booked-trainer',
                 element: <h2>booked-trainer</h2>
+            },
+            {
+                path: 'payment',
+                element: <Payment />
             },
         ]
     }

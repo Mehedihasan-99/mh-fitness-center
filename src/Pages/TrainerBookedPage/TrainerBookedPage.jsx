@@ -41,7 +41,7 @@ const TrainerBookedPage = () => {
             alert("Please select a membership package.");
             return;
         }
-        navigate("/payment", { state: { trainer, selectedSlot, classes, selectedPackage } });
+        navigate("/dashboard/payment", { state: { trainer, selectedSlot, classes, selectedPackage } });
     };
 
     return (
