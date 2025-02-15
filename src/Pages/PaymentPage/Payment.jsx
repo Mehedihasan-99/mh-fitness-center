@@ -4,20 +4,16 @@ import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from "./CheckoutForm";
 
 
-const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_pk)
+const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_Pk)
 
 const Payment = () => {
     const location = useLocation();
-    const { trainer, selectedSlot, classes, selectedPackage } = location.state || {};
-
-
-
-    console.log('payment:', { trainer, selectedSlot, classes, selectedPackage })
+    const bookInfo = location.state || {};
 
     return (
         <div>
             <Elements stripe={stripePromise}>
-                <CheckoutForm />
+                <CheckoutForm bookInfo={bookInfo} />
             </Elements>
         </div>
     );

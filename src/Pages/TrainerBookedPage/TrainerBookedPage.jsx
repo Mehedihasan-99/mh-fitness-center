@@ -51,7 +51,7 @@ const TrainerBookedPage = () => {
             {/* Trainer Info */}
             <div className="mb-8 p-5 border border-gray-300 rounded-lg bg-gray-100 shadow-sm">
                 <p className="text-lg font-semibold">Trainer: {name}</p>
-                <p>Selected Slot: {selectedSlot}</p>
+                <p>Selected Slot: {selectedSlot.slotName}</p>
                 <p>Class: {classes}</p>
             </div>
 

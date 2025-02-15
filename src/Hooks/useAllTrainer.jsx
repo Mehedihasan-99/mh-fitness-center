@@ -1,18 +1,24 @@
-import useAxiosClient from './useAxiosClient';
-import { useQuery } from '@tanstack/react-query';
+import useAxiosClient from "./useAxiosClient";
+import { useQuery } from "@tanstack/react-query";
 
 const useAllTrainer = () => {
+    const axiosClient = useAxiosClient();
 
-    const axiosClient = useAxiosClient()
-    const { data: trainers = [],isLoading, refetch } = useQuery({
-        queryKey: ['appliedTrainer'],
+    const { data: trainers = [], isLoading, error, refetch } = useQuery({
+        queryKey: ["appliedTrainer"],
         queryFn: async () => {
-            const res = await axiosClient.get(`users/admin/all-trainer`);
-            console.log(res.data)
-            return res.data;
-        }
+            try {
+                const res = await axiosClient.get("users/admin/all-trainer");
+                console.log("Fetched Trainers:", res.data);
+                return res.data || [];
+            } catch (err) {
+                console.error("Error fetching trainers:", err);
+                throw err;
+            }
+        },
     });
-    return [trainers, isLoading, refetch]
+
+    return [trainers, isLoading, error, refetch];
 };
 
 export default useAllTrainer;

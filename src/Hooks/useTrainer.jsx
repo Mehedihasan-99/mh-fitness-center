@@ -13,7 +13,8 @@ const useTrainer = () => {
         queryFn: async () => {
             const res = await axiosSecure.get(`/trainer/${user?.email}`);
             return res.data?.trainer;
-        }
+        },
+        enabled: !!user?.email,
     })
     return [isTrainer, isTrainerLoading]
 

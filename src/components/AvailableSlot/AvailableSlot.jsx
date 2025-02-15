@@ -19,8 +19,8 @@ const AvailableSlot = ({ email, name, details }) => {
     if (error) return <p className="text-red-500">Error fetching slots</p>;
 
     const handleBookSlot = (slot) => {
-        navigate(`/${name}/booked-slot/${slot._id}`, { 
-            state: { trainer: email, selectedSlot: slot.slotName, classes: slot.class } 
+        navigate(`/${name}/booked-slot/${slot._id}`, {
+            state: { trainer: { name, email }, selectedSlot: { slotName: slot.slotName, slotId: slot._id }, classes: slot.class }
         });
     };
 
@@ -40,7 +40,7 @@ const AvailableSlot = ({ email, name, details }) => {
                     </thead>
                     <tbody>
                         {slots.filter(slot => slot.trainer === email)
-                            .flatMap(slot => 
+                            .flatMap(slot =>
                                 <tr key={`${slot._id}`} className="text-center text-xs *:p-1 bg-gray-100 hover:bg-gray-200">
                                     <td className="border">{slot.slotName}</td>
                                     <td className="border">{slot.class}</td>
@@ -49,9 +49,10 @@ const AvailableSlot = ({ email, name, details }) => {
                                         details && <td className="border">
                                             <button
                                                 onClick={() => handleBookSlot(slot)}
-                                                className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-700"
+                                                className={`text-white px-3 py-1 rounded ${slot.status === 'booked' ? 'cursor-not-allowed bg-gray-500' : 'bg-green-500 hover:bg-green-700'}`}
+                                                disabled={slot.status === 'booked'}
                                             >
-                                                Book Now
+                                                {slot.status === 'booked' ? 'Booked' : 'Book Now'}
                                             </button>
                                         </td>
                                     }

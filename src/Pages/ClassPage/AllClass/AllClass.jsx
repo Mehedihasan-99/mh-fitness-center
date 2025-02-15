@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import Loading from "../../../components/Loading/Loading";
 import useClass from "../../../Hooks/useClass";
+import { FaBookDead, FaRegBookmark, FaStar } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa6";
 
 const Allclass = () => {
     const [classes, isLoading] = useClass();
@@ -21,7 +23,11 @@ const Allclass = () => {
                                 className="aspect-video w-full"
                             />
                         </figure>
-                        <div className="px-6 flex-1 grid grid-cols-5">
+                        <div className="px-6 flex justify-between">
+                            <p className="flex items-center text-sm gap-1">Rating: {item.rating || 0} <FaStar className="size-3"/></p>
+                            <p className="flex items-center text-sm gap-1">Booked: {item.booked || 0 } {item.booked ? <FaBookmark className="size-3"/> : <FaRegBookmark className="size-3"/>}</p>
+                        </div>
+                        <div className="px-6 flex-1 grid grid-cols-5 gap-2">
                             {
                                 item.trainers?.map(trainer => (<div
                                     key={trainer.trainerId}
@@ -32,7 +38,7 @@ const Allclass = () => {
                                             src={trainer.trainerImage}
                                             alt="user name"
                                             title={trainer.trainerName}
-                                            className="max-w-full h-14 rounded-full"
+                                            className="max-w-full  rounded-full"
                                         />
                                     </Link>
                                 </div>))
