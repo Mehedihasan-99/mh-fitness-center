@@ -18,9 +18,13 @@ import CommunityForumPage from "../Pages/CommunityForumPage/CommunityForumPage";
 import TrainersDetails from "../Pages/AllTrainersPage/TrainersDetails";
 import AddNewSlot from "../Pages/DashboardPage/TrainerDashboard/AddNewSlot/AddNewSlot";
 import TrainerRoutes from "./Trainerroutes";
+import AdminRoutes from "./AdminRoutes"
 import ManageSlot from "../Pages/DashboardPage/TrainerDashboard/ManageSlot/ManageSlot";
 import TrainerBookedPage from "../Pages/TrainerBookedPage/TrainerBookedPage";
 import Payment from "../Pages/PaymentPage/Payment";
+import PrivateRoutes from "./Privateroutes";
+import BookedTrainer from "../Pages/DashboardPage/UserDashboard/BookedTrainer/BookedTrainer";
+import Balance from "../Pages/DashboardPage/AdminDashboard/Balance/Balance";
 
 
 const Routes = createBrowserRouter([
@@ -50,7 +54,15 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/:name/booked-slot/:id',
-                element: <TrainerBookedPage />
+                element: <PrivateRoutes>
+                    <TrainerBookedPage />
+                </PrivateRoutes>
+            },
+            {
+                path: 'payment',
+                element: <PrivateRoutes>
+                    <Payment />
+                </PrivateRoutes>
             },
             {
                 path: '/login',
@@ -64,7 +76,9 @@ const Routes = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout />,
+        element: <PrivateRoutes>
+            <DashboardLayout />
+        </PrivateRoutes>,
         children: [
             {
                 path: 'admin/newsletters',
@@ -80,7 +94,9 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'admin/balance',
-                element: <h2>admin/balance</h2>
+                element: <AdminRoutes>
+                    <Balance/>
+                </AdminRoutes>
             },
             {
                 path: 'admin/add-class',
@@ -120,15 +136,13 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'be-a-trainer',
-                element: <BeATrainer />
+                element: <PrivateRoutes>
+                    <BeATrainer />
+                </PrivateRoutes>
             },
             {
                 path: 'booked-trainer',
-                element: <h2>booked-trainer</h2>
-            },
-            {
-                path: 'payment',
-                element: <Payment />
+                element: <BookedTrainer />
             },
         ]
     }

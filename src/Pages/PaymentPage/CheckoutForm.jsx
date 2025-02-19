@@ -82,6 +82,7 @@ const CheckoutForm = ({ bookInfo }) => {
                 // now save the payment in the  database 
                 const payment = {
                     email: user?.email,
+                    name: user?.displayName,
                     price,
                     package: selectedPackage?.name,
                     orderDate: new Date(),

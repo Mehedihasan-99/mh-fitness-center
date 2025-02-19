@@ -7,14 +7,8 @@ const useClass = () => {
     const { data: classes = [], isPending: isLoading, error, refetch } = useQuery({
         queryKey: ["classes"],
         queryFn: async () => {
-            try {
-                const res = await axiosClient.get("/classes");
-                console.log("Fetched Classes:", res.data);
-                return res.data || [];
-            } catch (err) {
-                console.error("Error fetching classes:", err);
-                throw err;
-            }
+            const res = await axiosClient.get("/classes");
+            return res.data || [];
         },
     });
 

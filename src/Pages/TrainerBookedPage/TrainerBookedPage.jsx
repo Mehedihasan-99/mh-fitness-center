@@ -41,8 +41,9 @@ const TrainerBookedPage = () => {
             alert("Please select a membership package.");
             return;
         }
-        navigate("/dashboard/payment", { state: { trainer, selectedSlot, classes, selectedPackage } });
+        navigate("/payment", { state: { trainer, selectedSlot, classes, selectedPackage } });
     };
+    console.log("selectedSlot :", selectedSlot)
 
     return (
         <div className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-xl mt-8">
@@ -51,7 +52,7 @@ const TrainerBookedPage = () => {
             {/* Trainer Info */}
             <div className="mb-8 p-5 border border-gray-300 rounded-lg bg-gray-100 shadow-sm">
                 <p className="text-lg font-semibold">Trainer: {name}</p>
-                <p>Selected Slot: {selectedSlot.slotName}</p>
+                <p>Selected Slot: {selectedSlot?.slotName || ''}</p>
                 <p>Class: {classes}</p>
             </div>
 

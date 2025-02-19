@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import useAuth from "../../Hooks/UseAuth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
 
@@ -10,7 +10,11 @@ const LoginForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [disabled, setDisabled] = useState(true);
     const { signIn } = useAuth();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const form = location?.state?.form?.pathname || '/'
+    console.log('login page : ', form)
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -35,7 +39,7 @@ const LoginForm = () => {
                 });
                 reset();
                 setDisabled(true);
-                navigate(location?.state?.from || "/");
+                navigate(form)
             })
             .catch((err) => {
                 let message = "Your email & password do not match.";

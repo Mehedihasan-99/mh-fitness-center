@@ -9,7 +9,7 @@ const MainLayout = () => {
     return (
         <div>
             {noHeaderFooter || <Navbar />}
-            <div className='min-h-[calc(100vh-405px)]'>
+            <div className='flex flex-col justify-center min-h-[calc(100vh-405px)]'>
                 <Outlet />
             </div>
             {noHeaderFooter || <Footer />}

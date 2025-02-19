@@ -3,7 +3,7 @@ import useAuth from "../Hooks/UseAuth";
 import Loading from "../components/Loading/Loading";
 
 
-const Privateroutes = ({children}) => {
+const PrivateRoutes = ({children}) => {
     const { user, loading } = useAuth();
     const location = useLocation();
 
@@ -15,7 +15,7 @@ const Privateroutes = ({children}) => {
         return children;
     }
 
-    return <Navigate to="/login" state={{form: location}} replace ></Navigate>
+    return <Navigate to="/login" state={{form: location}} replace />
 };
 
-export default Privateroutes;
+export default PrivateRoutes;
