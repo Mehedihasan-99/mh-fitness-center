@@ -25,12 +25,14 @@ import Payment from "../Pages/PaymentPage/Payment";
 import PrivateRoutes from "./Privateroutes";
 import BookedTrainer from "../Pages/DashboardPage/UserDashboard/BookedTrainer/BookedTrainer";
 import Balance from "../Pages/DashboardPage/AdminDashboard/Balance/Balance";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 const Routes = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -79,6 +81,7 @@ const Routes = createBrowserRouter([
         element: <PrivateRoutes>
             <DashboardLayout />
         </PrivateRoutes>,
+        errorElement: <ErrorPage/> ,
         children: [
             {
                 path: 'admin/newsletters',
