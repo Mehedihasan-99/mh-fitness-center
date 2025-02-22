@@ -7,7 +7,7 @@ const useAllTrainer = () => {
     const { data: trainers = [], isLoading, error, refetch } = useQuery({
         queryKey: ["appliedTrainer"],
         queryFn: async () => {
-            const res = await axiosClient.get("users/admin/all-trainer");
+            const res = await axiosClient.get("/users/admin/all-trainer");
             return res.data || [];
         },
     });

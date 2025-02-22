@@ -3,12 +3,17 @@ import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import useAllTrainer from '../../Hooks/useAllTrainer';
 import { Link } from 'react-router-dom';
 import AvailableSlot from '../../components/AvailableSlot/AvailableSlot';
+import { Helmet } from 'react-helmet-async';
 
 const AllTrainer = () => {
     const [trainers] = useAllTrainer()
+    console.log('All Trainers :', trainers)
 
     return (
         <div className='bg-slate-200 flex flex-col items-center p-4'>
+            <Helmet>
+                <title>MH Fitness Center | All Trainers</title>
+            </Helmet>
             <div className='w-full'>
                 <div className='w-80 mx-auto'>
                     <SectionTitle firstTitle='All' secondTitle='Trainers' />

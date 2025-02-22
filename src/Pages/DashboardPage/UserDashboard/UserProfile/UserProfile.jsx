@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Loading from "../../../../components/Loading/Loading";
 import useAdmin from "../../../../Hooks/useAdmin";
 import useAuth from "../../../../Hooks/UseAuth";
@@ -12,6 +13,9 @@ const UserProfile = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>MH Fitness Center | Profile {user?.displayName}</title>
+            </Helmet>
             <div className="overflow-hidden rounded bg-white text-center text-slate-500 shadow-md shadow-slate-200">
                 {/*  <!-- Image --> */}
                 <figure className=" p-6 md:p-10">

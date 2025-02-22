@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 const TrainerBookedPage = () => {
@@ -8,7 +9,6 @@ const TrainerBookedPage = () => {
     const { trainer, selectedSlot, classes } = location.state || {};
 
     const [selectedPackage, setSelectedPackage] = useState(null);
-    console.log(selectedPackage)
 
     const packages = [
         {
@@ -43,10 +43,12 @@ const TrainerBookedPage = () => {
         }
         navigate("/payment", { state: { trainer, selectedSlot, classes, selectedPackage } });
     };
-    console.log("selectedSlot :", selectedSlot)
 
     return (
         <div className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-xl mt-8">
+            <Helmet>
+                <title>MH Fitness Center | Trainer booked page</title>
+            </Helmet>
             <h2 className="text-3xl font-extrabold text-center mb-6 text-gray-800">Trainer Booking Details</h2>
 
             {/* Trainer Info */}

@@ -68,7 +68,6 @@ const CheckoutForm = ({ bookInfo }) => {
         else {
             console.log('payment intent : ', paymentIntent)
             if (paymentIntent.status === 'succeeded') {
-                console.log("id", paymentIntent.id)
                 const id = paymentIntent.id
                 setTransactionId(id);
                 Swal.fire({
@@ -94,10 +93,8 @@ const CheckoutForm = ({ bookInfo }) => {
                     slot: selectedSlot,
                     classInfo: classes,
                 }
-                console.log('payment', payment)
 
                 const res = await axiosSecure.patch('/payments', payment);
-                console.log('payment update Successfully :');
                 navigate('/dashboard/booked-trainer')
             }
         }

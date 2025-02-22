@@ -3,6 +3,7 @@ import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import { FaDeleteLeft } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useAllTrainer from "../../../../Hooks/useAllTrainer";
+import { Helmet } from "react-helmet-async";
 
 const Trainers = () => {
     const axiosSecure = useAxiosSecure()
@@ -10,7 +11,6 @@ const Trainers = () => {
 
     const handleDelete = async (item) => {
         const res = await axiosSecure.patch(`/users/admin/delete-Trainer/${item._id}`)
-        console.log('result: ', item._id, res.data)
         if (res.data.status) {
             Swal.fire({
                 icon: "success",
@@ -24,6 +24,9 @@ const Trainers = () => {
 
     return (
         <div className="flex flex-col items-center bg-gray-100 py-16 mb-4 md:mb-10 lg:mb-20">
+            <Helmet>
+                <title>MH Fitness Center | All Trainers</title>
+            </Helmet>
             <div className="min-w-80 mx-auto">
                 <SectionTitle
                     firstTitle="all"

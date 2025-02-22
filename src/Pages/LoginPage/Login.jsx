@@ -5,6 +5,7 @@ import useAuth from "../../Hooks/UseAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
+import { Helmet } from "react-helmet-async";
 
 const LoginForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -14,7 +15,6 @@ const LoginForm = () => {
     const location = useLocation();
 
     const form = location?.state?.form?.pathname || '/'
-    console.log('login page : ', form)
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -62,6 +62,9 @@ const LoginForm = () => {
 
     return (
         <div className="w-11/12 mx-auto lg:max-w-7xl">
+            <Helmet>
+                <title>MH Fitness Center | Login</title>
+            </Helmet>
             <div className="flex items-center justify-center min-h-screen bg-gray-100">
                 <div className="w-full max-w-lg p-16 bg-white rounded-lg shadow-md">
                     <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">Login</h2>

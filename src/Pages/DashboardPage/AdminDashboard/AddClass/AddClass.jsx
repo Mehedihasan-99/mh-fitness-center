@@ -2,6 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -46,7 +47,6 @@ const AddClass = () => {
             }
         } catch (error) {
             const message = error.code.split('/')[1]
-            console.log('error :', message)
             Swal.fire({
                 icon: "error",
                 title: "Sign-Up Failed",
@@ -58,6 +58,9 @@ const AddClass = () => {
 
     return (
         <div className="w-full">
+            <Helmet>
+                <title>MH Fitness Center | Add Class</title>
+            </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
                 {/*  <!-- Body--> */}
                 <div className="p-6">

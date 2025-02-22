@@ -43,7 +43,6 @@ const ReviewModal = ({ isShowing, setIsShowing, selectedClass }) => {
             setIsShowing(false);
             setRating(0);
             setReview(' ');
-            console.log('Result:', res);
         } catch (error) {
             Swal.fire("Error", "Failed to submit review. Try again!", "error");
         }

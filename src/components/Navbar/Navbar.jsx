@@ -30,7 +30,7 @@ const Navbar = () => {
     if (loading) return <Loading />
 
     return (
-        <div className="sticky top-0 z-50 bg-slate-300">
+        <div className="sticky top-0 z-50 max-w-7xl bg-slate-300">
             <div className="w-11/12 relative mx-auto lg:max-w-5xl">
                 <nav
                     aria-label="main navigation"

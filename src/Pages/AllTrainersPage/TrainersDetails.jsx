@@ -3,6 +3,7 @@ import AvailableSlot from "../../components/AvailableSlot/AvailableSlot";
 import useAxiosClient from "../../Hooks/useAxiosClient";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const TrainersDetails = () => {
     const axiosClient = useAxiosClient();
@@ -22,6 +23,9 @@ const TrainersDetails = () => {
 
     return (
         <div className="bg-gray-200 w-10/12 mx-auto my-4 md:my-10 p-6 md:p-10 rounded-lg shadow-lg">
+            <Helmet>
+                <title>MH Fitness Center | Trainer {trainer.name.split(' ')[0]}</title>
+            </Helmet>
             <h2 className='uppercase font-semibold text-center mb-4 md:mb-10 text-3xl'>Trainer {trainer.name} Details</h2>
             <div className='grid grid-cols-1 md:grid-cols-2'>
                 <div className='flex flex-col items-center'>

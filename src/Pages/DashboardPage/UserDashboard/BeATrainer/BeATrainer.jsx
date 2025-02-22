@@ -3,6 +3,7 @@ import SectionTitle from '../../../../components/SectionTitle/SectionTitle';
 import useAuth from '../../../../Hooks/UseAuth';
 import useAxiosClient from '../../../../Hooks/useAxiosClient';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const BeATrainer = () => {
     const { user } = useAuth();
@@ -10,9 +11,7 @@ const BeATrainer = () => {
     const axiosClient = useAxiosClient()
 
     const onSubmit = async (data) => {
-        console.log('data', data);
         const res = await axiosClient.patch('/users', { ...data, status: 'pending' });
-        console.log('be a trainer', res.data)
         if (res.data) {
             Swal.fire({
                 icon: "success",
@@ -28,6 +27,9 @@ const BeATrainer = () => {
 
     return (
         <div className="flex flex-col justify-center items-center bg-gray-100 py-16 mb-4 md:mb-10 lg:mb-20">
+            <Helmet>
+                <title>MH Fitness Center | Be a Trainer</title>
+            </Helmet>
             <div className="w-full text-center mx-auto">
                 <SectionTitle
                     firstTitle="apply to be a"

@@ -3,9 +3,9 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import useAuth from "../../../../Hooks/UseAuth";
 import Loading from "../../../../components/Loading/Loading";
 import moment from "moment/moment";
-import Swal from "sweetalert2";
 import { useState } from "react";
 import ReviewModal from "../../../../components/ReviewModal/ReviewModal";
+import { Helmet } from "react-helmet-async";
 
 const BookedTrainer = () => {
     const { user } = useAuth();
@@ -25,12 +25,14 @@ const BookedTrainer = () => {
         setSelectedClass(className);
         setIsShowing(true);
     };
-    console.log('submit :', selectedClass)
 
     if (isLoading) return <Loading />
 
     return (
         <div className="flex flex-col items-center">
+            <Helmet>
+                <title>MH Fitness Center | Booked Trainers</title>
+            </Helmet>
             <h2 className="text-2xl font-semibold mb-4"> Booked Trainer Details</h2>
             {
                 data.map(item => (

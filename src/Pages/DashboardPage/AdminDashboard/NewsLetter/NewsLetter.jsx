@@ -1,12 +1,16 @@
+import { Helmet } from "react-helmet-async";
 import useNewsletter from "../../../../Hooks/useNewsletter";
 import Loading from "../../../../components/Loading/Loading";
 
 const Newsletter = () => {
-    const [ newsletter, isLoading] = useNewsletter()
+    const [newsletter, isLoading] = useNewsletter()
 
-    if(isLoading) return <Loading />
+    if (isLoading) return <Loading />
     return (
         <div className="w-full overflow-x-auto">
+            <Helmet>
+                <title>MH Fitness Center | Newsletters</title>
+            </Helmet>
             <h2 className="text-center uppercase font-bold text-orange-400 md:text-4xl mb-5">news letter</h2>
             <table className="w-full text-left border-2 border-separate border-slate-500" cellspacing="0">
                 <tbody>
@@ -19,7 +23,7 @@ const Newsletter = () => {
                                     <th scope="col" className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Email</th>
                                 </tr>
                                 {
-                                    data.map((item, index) =>
+                                    newsletter.map((item, index) =>
                                         <tr key={item._id}>
                                             <th scope="row" className="h-12 px-6 text-sm text-center transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{index + 1}</th>
                                             <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{item.name}</td>

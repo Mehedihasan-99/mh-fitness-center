@@ -4,17 +4,16 @@ import Loading from "../../../../components/Loading/Loading";
 import { FaEye } from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
 import useAxiosClient from "../../../../Hooks/useAxiosClient";
+import { Helmet } from "react-helmet-async";
 
 const ManageSlot = () => {
     const { user, loading } = useAuth();
     const axiosClient = useAxiosClient();
-    console.log("user", user.email)
 
     const { data: slots = [], isLoading } = useQuery({
         queryKey: ['slots', user?.email],
         queryFn: async () => {
             const res = await axiosClient.get(`/slots/${user.email}`);
-            console.log('res', res.data)
             return res.data || [];
         },
         enabled: !!user?.email
@@ -24,10 +23,13 @@ const ManageSlot = () => {
 
     return (
         <div className="w-full">
+            <Helmet>
+                <title>MH Fitness Center | Manage Slot</title>
+            </Helmet>
             <div className="w-full overflow-x-auto">
                 <h2 className="text-center font-bold text-4xl mb-4">All Slots</h2>
                 {
-                    slots.length > 0  ?
+                    slots.length > 0 ?
                         <table className="w-full text-left border border-separate rounded border-slate-200">
                             <tbody>
                                 <tr className="bg-blue-400 *:h-12 text-center">

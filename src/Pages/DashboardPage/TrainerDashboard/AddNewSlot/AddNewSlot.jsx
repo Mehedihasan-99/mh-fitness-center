@@ -4,9 +4,9 @@ import useAxiosClient from '../../../../Hooks/useAxiosClient';
 import useClass from '../../../../Hooks/useClass';
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from 'sweetalert2';
-import { useEffect, useState } from 'react';
 import Loading from '../../../../components/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const AddNewSlot = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -15,9 +15,9 @@ const AddNewSlot = () => {
     const axiosClient = useAxiosClient();
     const axiosSecure = useAxiosSecure();
 
-    const {data: trainerInfo ,isLoading, refetch} = useQuery({
+    const { data: trainerInfo, isLoading, refetch } = useQuery({
         queryKey: ['trainerinfo'],
-        queryFn: async() => {
+        queryFn: async () => {
             const res = await axiosClient.get(`/users/${user?.email}`)
             return res.data
         }
@@ -63,6 +63,9 @@ const AddNewSlot = () => {
     if (loading && isLoading) return <Loading />
     return (
         <div className="w-full">
+            <Helmet>
+                <title>MH Fitness Center | Add new slot</title>
+            </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
                 {/*  <!-- Body--> */}
                 <div className="p-6">
@@ -108,7 +111,7 @@ const AddNewSlot = () => {
                                 />
                             </div>
                         </div>
-                        
+
                         <div className='border-b-4 border-black my-6'></div>
                         {/*      <!-- Input field --> */}
                         <div className='grid md:grid-cols-2 md:gap-2'>

@@ -7,7 +7,7 @@ const MainLayout = () => {
 
     const noHeaderFooter = location.pathname.includes('/login') || location.pathname.includes('/sign-up')
     return (
-        <div>
+        <div className='max-w-7xl bg-blue-100'>
             {noHeaderFooter || <Navbar />}
             <div className='flex flex-col justify-center min-h-[calc(100vh-405px)]'>
                 <Outlet />

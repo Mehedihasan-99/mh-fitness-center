@@ -4,6 +4,7 @@ import useAxiosClient from '../../Hooks/useAxiosClient';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import GoogleLogin from '../../components/GoogleLogin/GoogleLogin';
+import { Helmet } from 'react-helmet-async';
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -61,11 +62,10 @@ const SignUp = () => {
             }
         } catch (error) {
             const message = error.code.split('/')[1]
-            console.log('error :', message)
             Swal.fire({
                 icon: "error",
                 title: "Sign-Up Failed",
-                text: message ,
+                text: message,
             });
         }
     };
@@ -75,6 +75,9 @@ const SignUp = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>MH Fitness Center | Sign-Up</title>
+            </Helmet>
             <div className="w-11/12 mx-auto lg:max-w-7xl">
                 <div className="flex items-center justify-center min-h-screen bg-gray-100">
                     <div className="w-full max-w-lg p-16 bg-white rounded-lg shadow-md">

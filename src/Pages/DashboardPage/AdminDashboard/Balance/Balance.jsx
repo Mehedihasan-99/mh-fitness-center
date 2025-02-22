@@ -5,6 +5,7 @@ import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import useMembers from "../../../../Hooks/useMembers";
 import Loading from "../../../../components/Loading/Loading";
 import useNewsletter from "../../../../Hooks/useNewsletter";
+import { Helmet } from "react-helmet-async";
 
 const Balance = () => {
     const [members, isMembersLoading] = useMembers();
@@ -35,6 +36,9 @@ const Balance = () => {
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen">
+            <Helmet>
+                <title>MH Fitness Center | Balance</title>
+            </Helmet>
             <div className="w-full text-center">
                 <SectionTitle firstTitle={'Total'} secondTitle={'Balance'} />
             </div>

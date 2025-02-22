@@ -25,7 +25,6 @@ const AuthProviders = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const axiosClient = useAxiosClient()
 
-    // console.log('user :', user)
 
     // user create 
     const createUser = (email, password) => {
@@ -69,7 +68,6 @@ const AuthProviders = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-            console.log('currentUser :', currentUser)
             setUser(currentUser);
             if (currentUser) {
                 const userInfo = { email: currentUser.email } 

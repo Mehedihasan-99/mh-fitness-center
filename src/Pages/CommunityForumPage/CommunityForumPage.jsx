@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async';
+import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import useForum from '../../Hooks/useForum';
 
 const CommunityForumPage = () => {
@@ -5,7 +7,15 @@ const CommunityForumPage = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-6xl font-bold text-purple-400">class {forums.length}</h2>
+            <Helmet>
+                <title>MH Fitness Center | Community Forums</title>
+            </Helmet>
+            <div className='text-center'>
+                <SectionTitle
+                    firstTitle={'Community'}
+                    secondTitle={'Forums'}
+                />
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
                     forums.map(item => <div
@@ -18,19 +28,11 @@ const CommunityForumPage = () => {
                                 className="aspect-video w-full"
                             />
                         </figure>
-                        <div>
-                            <div>
-
-                            </div>
-                            <p>{item.timeStamp}</p>
-                        </div>
                         <div className="p-6">
-                            <header className="">
-                                <h3 className="text-lg md:text-3xl mb-2  font-medium text-slate-700">
-                                    {item.title}
-                                </h3>
-                                <p className="text-sm text-slate-400"> {item.content.slice(0, 150)}.....</p>
-                            </header>
+                            <h3 className="text-lg md:text-3xl mb-2  font-medium text-slate-700">
+                                {item.title}
+                            </h3>
+                            <p className="text-sm text-slate-400"> {item.content.slice(0, 150)}.....</p>
                         </div>
                     </div>)
                 }

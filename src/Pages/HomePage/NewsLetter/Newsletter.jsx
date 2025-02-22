@@ -9,9 +9,7 @@ const Newsletter = () => {
     const axiosClient = useAxiosClient();
 
     const onSubmit = async (data) => {
-        console.log('data', data)
         const res = axiosClient.post('/newsletter', data)
-        console.log( 'res :', res)
     }
 
     return (

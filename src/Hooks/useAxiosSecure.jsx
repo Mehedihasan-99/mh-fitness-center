@@ -4,7 +4,7 @@ import useAuth from "./UseAuth";
 import Loading from "../components/Loading/Loading";
 
 const axiosSecure = axios.create({
-    baseURL: "http://localhost:4000"
+    baseURL: "https://mh-fitness-center-server.vercel.app"
 })
 
 const useAxiosSecure = () => {
@@ -28,7 +28,6 @@ const useAxiosSecure = () => {
     },
         async (error) => {
             const status = error.response.status
-            // console.log('status error in the interceptors', status);
             if (status === 401 || status === 403) {
                 await logout();
                 navigate('/login')
