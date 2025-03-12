@@ -8,7 +8,7 @@ The **MH Fitness Center** is a full-stack web application designed to manage fit
 
 ## **Live Site**
 - Visit Live Site: [MH Fitness Center](https://mh-fitness-center.web.app)
-- GitHub Repo - Client Side: [Client Site Repo](https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Mehedihasan-99)
+- GitHub Repo - Client Side: [Client Site Repo](https://github.com/Mehedihasan-99/mh-fitness-center)
 - GitHub Repo - Server Side: [Server Site Repo](https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Mehedihasan-99)
 
 ---
